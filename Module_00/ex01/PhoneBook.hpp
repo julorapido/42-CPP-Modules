@@ -6,7 +6,7 @@
 /*   By: jsaintho <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/16 17:09:58 by jsaintho          #+#    #+#             */
-/*   Updated: 2024/09/17 16:40:29 by jsaintho         ###   ########.fr       */
+/*   Updated: 2024/09/18 12:32:46 by jsaintho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@
 # define YELLOW "\001\033[1;93m\002"
 # define MAGENTA "\001\033[1;95m\002"
 # define GRAY "\001\033[1;90m\002"
+# define BOLDBLUE    "\033[1m\033[34m"
 
 class PhoneBook
 {

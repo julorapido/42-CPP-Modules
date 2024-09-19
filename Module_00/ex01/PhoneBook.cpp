@@ -6,7 +6,7 @@
 /*   By: jsaintho <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 13:07:44 by jsaintho          #+#    #+#             */
-/*   Updated: 2024/09/17 16:43:22 by jsaintho         ###   ########.fr       */
+/*   Updated: 2024/09/18 12:52:37 by jsaintho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ void PhoneBook::add(void)
 	std::string v;
 
 	Contact c;
+	std::cout << "========   Creating Contact ["  << i + 1 << "]   ========" << std::endl;
 	for(int j = 0; j < 4; j ++)
 	{
 		std::cout << prompts[j] << ":" << std::endl;
@@ -46,7 +47,7 @@ void PhoneBook::add(void)
 	else
 		std::cout << YELLOW << "Contact" << i + 1 << " Successfully modified !" << DEFAULT << std::endl;
 	if(b == 0)
-		setCount(i);
+		setCount(i + 1);
 	if(i + 1 == 8)
 		b = 1;
 	i++;
@@ -70,10 +71,12 @@ void	PhoneBook::search(void)
 	}
 	std::cout << "Type index of the entry to continue." << std::endl;
 	int a; std::cin >> a;
-	if(!(a >= 0 && a < 9) || a > this->us_count){
-		std::cout << RED << "Index out of PhoneBook Range." << std::endl;
+	if(!std::cin)
+		return ;
+	if(!(a >= 0 && a < 9) || a > (this->us_count - 1)){
+		std::cout << RED << "Index out of PhoneBook Range." << DEFAULT << std::endl;
 	}else{
-		const std::string cl[4] = {"Index : ", "First Name : ", "Last Name : ", "Nickname : "};
+		const std::string cl[4] = {"First Name : ", "Last Name : ", "Nickname : ", "Secret : "};
 		for(int j = 0; j < 4; j ++)
 			std::cout << cl[j] << this->contacts_[a].Get_Contact_Field(j) << std::endl;
 	}

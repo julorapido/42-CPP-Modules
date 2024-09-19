@@ -6,7 +6,7 @@
 /*   By: jsaintho <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 13:03:31 by jsaintho          #+#    #+#             */
-/*   Updated: 2024/09/17 15:10:23 by jsaintho         ###   ########.fr       */
+/*   Updated: 2024/09/18 12:33:30 by jsaintho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int main(void)
 		else if (s == "EXIT")
 			break;
 		else
-			std::cout << "(Please enter a valid command !)" << std::endl;
+			std::cout << BOLDBLUE << "(Please enter a valid command !)" << DEFAULT << std::endl;
 	}
 	return (0);
 }
