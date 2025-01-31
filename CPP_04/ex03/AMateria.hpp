@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   AMateria.hpp                                       :+:      :+:    :+:   */
+/*   Materials.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jsaintho <jsaintho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 12:08:19 by jsaintho          #+#    #+#             */
-/*   Updated: 2025/01/28 15:39:26 by jsaintho         ###   ########.fr       */
+/*   Updated: 2025/01/29 12:06:31 by jsaintho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,103 +15,63 @@
 # define AMATERIA_HPP
 # include <iostream>
 # include "ICharacter.hpp"
+# include "IMateriaSource.hpp"
 
 using namespace std;
 
-// ABSTRACT MATERIAL
+class ICharacter;
+
+// INTERFACE A-MATERIAL
 class AMateria
 {
 	protected:
 		std::string	_type;
-
-		/* Constructors & Destructors */
+	public:
+		AMateria(void);
+		AMateria(const AMateria &src);
 		AMateria(std::string const &type);
-		AMateria(AMateria const &copy);
-	public:
-		/* Constructors & Destructors */
-		virtual ~AMateria(void);
+		AMateria			&operator =(const AMateria &src);
 
-		/* Basic Operators */
-		AMateria const	&operator=(AMateria const &copy);
+		std::string const	&getType() const;
 
-		/* Getters & Setters */
-		std::string const	&getType(void) const;
+		virtual				~AMateria();
+		virtual AMateria	*clone() const = 0;
+		virtual void		use(ICharacter &target);
 
-		/* Main Member Functions */
-		virtual AMateria	*clone(void) const = 0;
-		virtual void		use(ICharacter &target) = 0;
 };
-
-// INTEFACE MATERIAL
-class IMateriaSource
-{
-	protected:
-		/* PROTECTED Constructors & Destructors */
-		IMateriaSource(void);
-		IMateriaSource(IMateriaSource const &copy);
-
-		/* Basic Operators */
-		IMateriaSource const	&operator=(IMateriaSource const &copy);
-	public:
-		/* Constructors & Destructors */
-		virtual ~IMateriaSource() {}
-
-		/* Main Member Functions */
-		virtual void		learnMateria(AMateria *materia) = 0;
-		virtual AMateria*	createMateria(std::string const &type) = 0;
-};
-
-
-class MateriaSource: public IMateriaSource
-{
-	private:
-		AMateria	*_learnInventory[4];
-	public:
-		/* Constructors & Destructors */
-		MateriaSource(void);
-		MateriaSource(MateriaSource const &copy);
-		~MateriaSource(void);
-
-		/* Basic Operators */
-		MateriaSource const	&operator=(MateriaSource const &copy);
-
-		/* Main Member Functions */
-		virtual void		learnMateria(AMateria *materia);
-		virtual AMateria*	createMateria(std::string const &type);
-		int 				inLearnInventory(AMateria *materia);
-};
-
 class Cure: public AMateria
 {
 	public:
-		/* Constructors & Destructors */
 		Cure(void);
-		Cure(Cure const &copy);
-		~Cure(void);
+		Cure(const Cure &src);
+		Cure	&operator =(const Cure &src);
 
-		/* Basic Operators */
-		Cure const	&operator=(Cure const &copy);
+		virtual	~Cure();
 
-		/* Main Member Functions */
-		virtual AMateria	*clone(void) const;
-		void				use(ICharacter &target);
+		Cure	*clone() const;
+		void	use(ICharacter &target);
+
 };
-
 class Ice: public AMateria
 {
 	public:
-		/* Constructors & Destructors */
 		Ice(void);
-		Ice(Ice const &copy);
-		~Ice(void);
+		Ice(const Ice &src);
+		Ice		&operator =(const Ice &src);
 
-		/* Basic Operators */
-		Ice const	&operator=(Ice const &copy);
+		virtual	~Ice();
 
-		/* Main Member Functions */
-		virtual AMateria	*clone(void) const;
-		void				use(ICharacter &target);
+		Ice		*clone() const;
+		void	use(ICharacter &target);
+
 };
+
+
+
+
+
+
+
 
 
 

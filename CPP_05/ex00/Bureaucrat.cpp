@@ -1,0 +1,101 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Bureaucrat.cpp                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jsaintho <jsaintho@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/01/31 14:49:31 by jsaintho          #+#    #+#             */
+/*   Updated: 2025/01/31 15:29:01 by jsaintho         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "Bureaucrat.hpp"
+
+Bureaucrat::Bureaucrat()
+{
+    this->_name = "Default Bureaucrat.";
+    this->_grade = 150;
+    std::cout << "New Bureaucrat!" << std::endl;
+
+}
+
+Bureaucrat::Bureaucrat(std::string const &n)
+{
+    this->_name = n;
+    this->_grade = 150;
+    std::cout << "New Bureaucrat!" << std::endl;
+}
+
+Bureaucrat::Bureaucrat(Bureaucrat const &copy)
+{
+    this->_name = copy.getName();
+    this->_grade = copy.getGrade();
+    std::cout << "New Bureaucrat!" << std::endl;
+}
+
+Bureaucrat::~Bureaucrat()
+{
+    std::cout << "bye bye Bureaucrat!" << std::endl;
+}
+std::string     Bureaucrat::getName(void) const
+{
+    return (this->_name);
+}
+
+unsigned int    Bureaucrat::getGrade(void) const
+{
+    return (this->_grade);
+}
+
+void    Bureaucrat::incrementGrade(void)
+{
+    try
+    {
+        if(this->_grade - 1 < 1)
+        {
+            throw TooHighException();  // Throw an instance of MyException
+        }else
+            this->_grade -= 1;
+    }
+    catch (std::exception & e)
+    {
+        std::cout << "\033[03 Caught exception: " << e.what() << std::endl;
+    }
+}
+
+
+void    Bureaucrat::decrementGrade(void)
+{
+    try
+    {
+        // std::cout << "frere" << this->_grade << " - " << 1 << std::endl;
+        if(this->_grade + 1 > 150)
+        {
+            throw TooLowException();  // Throw an instance of MyException
+        }else
+            this->_grade += 1;
+    }
+    catch (std::exception & e)
+    {
+        std::cout << "\033[03 Caught exception: " << e.what() << std::endl;
+    }
+}
+
+void	Bureaucrat::setGrade(int grade)
+{
+	if (grade > 150)
+		throw TooLowException();
+	else if (grade < 1)
+		throw TooHighException();
+	else
+		this->_grade = grade;
+}
+
+
+// ostream Overload
+std::ostream	&operator<<(std::ostream &o, Bureaucrat *a)
+{
+	o << "Bureaucrat " << a->getName() << ":\n\tgrade: " << a->getGrade() << std::endl;
+	return (o);
+}

@@ -6,7 +6,7 @@
 /*   By: jsaintho <jsaintho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 15:31:26 by jsaintho          #+#    #+#             */
-/*   Updated: 2025/01/28 15:37:24 by jsaintho         ###   ########.fr       */
+/*   Updated: 2025/01/31 12:35:28 by jsaintho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,55 +16,46 @@
 # define ICHARACTER_HPP
 # include <iostream>
 # include "AMateria.hpp"
+# include "IMateriaSource.hpp"
+
 using namespace std;
+
+class AMateria;
 
 // INTERFACE CHARACTER
 class ICharacter
 {
-	protected:
-		/* PROTECTED Constructors & Destructors & Operator */
-		ICharacter(void);
-		ICharacter(ICharacter const &copy);
-		ICharacter const	&operator=(ICharacter const &copy);
 	public:
-		/* Constructors & Destructors */
-		virtual	~ICharacter() {}
-
-		/* Getters & Setters */
-		virtual std::string const	&getName() const = 0;
-
-		/* Main Member Functions */
+		virtual 		~ICharacter(){};
+		virtual const	std::string &getName() const = 0;
 		virtual void	equip(AMateria *m) = 0;
 		virtual void	unequip(int idx) = 0;
 		virtual void	use(int idx, ICharacter &target) = 0;
+
 };
 
 
 // "public" CHARACTER
 class Character: public ICharacter
 {
-	private:
-		std::string	_name;
-		AMateria	*_inventory[4];
+	protected:
+		static const int	_inventorySize = 4;
+		AMateria 			*_inventory[_inventorySize];
+		std::string			_name;
+
 	public:
-		/* Constructors & Destructors */
 		Character(void);
-		Character(std::string const &name);
-		Character(Character const &copy);
-		~Character(void);
+		Character(const std::string &name);
+		Character(const Character &src);
+		Character &operator=(Character const & ref);
 
-		/* Basic Operators */
-		Character const	&operator=(Character const &copy);
+		virtual				~Character();
 
-		/* Getters & Setters */
-		std::string const	&getName(void) const;
-		void				setName(std::string const &name);
+		const std::string	&getName() const;
+		void				equip(AMateria *m);
+		void				unequip(int idx);
+		void				use(int idx, ICharacter &target);
 
-		/* Main Member Functions */
-		virtual void	equip(AMateria *m);
-		virtual void	unequip(int idx);
-		virtual void	use(int idx, ICharacter &target);
-		int 			inInventory(AMateria *m);
 };
 
 #endif
