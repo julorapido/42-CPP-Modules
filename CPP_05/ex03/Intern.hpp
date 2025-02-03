@@ -1,0 +1,30 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Intern.hpp                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jsaintho <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/02/03 16:36:05 by jsaintho          #+#    #+#             */
+/*   Updated: 2025/02/03 16:39:02 by jsaintho         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#ifndef INTERN_HPP
+
+# define INTERN_HPP
+
+#include <iostream>
+using namespace std;
+
+class Intern
+{
+	public:
+		~Intern();
+		Intern();
+		Intern(const Intern &copy);
+		Form *MakeForm(std::string a, std::string b);		
+};
+
+#endif
+

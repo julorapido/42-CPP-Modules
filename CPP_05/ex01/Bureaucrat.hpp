@@ -6,7 +6,7 @@
 /*   By: jsaintho <jsaintho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 14:41:02 by jsaintho          #+#    #+#             */
-/*   Updated: 2025/02/03 12:03:12 by jsaintho         ###   ########.fr       */
+/*   Updated: 2025/02/03 12:10:22 by jsaintho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,19 +17,7 @@
 #include <iostream>
 using namespace std;
 
-class TooHighException : public std::exception {
-	public:
-		const char* what() const throw() {
-			return "Grade too high (< 1)!";
-		}
-};
 
-class TooLowException : public std::exception {
-	public:
-		const char* what() const throw() {
-			return "Grade too low (> 150)!";
-		}
-};
 
 
 class Bureaucrat
@@ -49,6 +37,20 @@ class Bureaucrat
 		void			incrementGrade(void);
 		void			decrementGrade(void);
 		void			setGrade(int grade);
+
+	class TooHighException : public std::exception {
+		public:
+			const char* what() const throw() {
+				return "Grade too high (< 1)!";
+			}
+	};
+
+	class TooLowException : public std::exception {
+		public:
+			const char* what() const throw() {
+				return "Grade too low (> 150)!";
+			}
+	};
 };
 std::ostream	&operator<<(std::ostream &o, Bureaucrat *a);
 

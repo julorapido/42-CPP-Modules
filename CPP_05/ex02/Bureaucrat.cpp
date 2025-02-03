@@ -6,11 +6,16 @@
 /*   By: jsaintho <jsaintho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 14:49:31 by jsaintho          #+#    #+#             */
-/*   Updated: 2025/02/03 12:06:49 by jsaintho         ###   ########.fr       */
+/*   Updated: 2025/02/03 16:31:13 by jsaintho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+
 #include "Bureaucrat.hpp"
+#include "AForm.hpp"
+#include "ShrubberyCreationForm.hpp"
+#include "RobotomyRequestForm.hpp"
+#include "PresidentialPardonForm.hpp"
 
 Bureaucrat::Bureaucrat()
 {
@@ -52,6 +57,28 @@ Bureaucrat::Bureaucrat(Bureaucrat const &copy)
     this->_grade = copy.getGrade();
     std::cout << "New Bureaucrat!" << std::endl;
 }
+
+void    Bureaucrat::executeForm(Form const & form)
+{
+    Form const &baseRef = form;  // Base reference to form object
+    if(form.getRequiredGradeSign() == 145)
+    {
+        ShrubberyCreationForm const & A_A = static_cast<ShrubberyCreationForm const &>(baseRef);
+        (A_A).execute(*this);
+    }
+    if(form.getRequiredGradeSign() == 72)
+    {
+        RobotomyRequestForm const & A_A = static_cast<RobotomyRequestForm const &>(baseRef);
+        (A_A).execute(*this);
+    }
+    if(form.getRequiredGradeSign() == 25)
+    {
+        PresidentialPardonForm const & A_A = static_cast<PresidentialPardonForm const &>(baseRef);
+        (A_A).execute(*this);
+    }
+
+}
+
 
 Bureaucrat::~Bureaucrat()
 {
