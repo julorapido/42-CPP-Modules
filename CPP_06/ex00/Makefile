@@ -1,8 +1,8 @@
-exec = ScalarTypes
+exec = convert
 src = *.cpp
 src_obj = $(exec.c=.o)
 cc = c++
-flags = -Wall -Wextra -Werror -std=c++98
+flags = -Wall -Wextra -std=c++98
 
 all: $(exec)
 
