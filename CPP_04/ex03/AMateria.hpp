@@ -17,7 +17,6 @@
 # include "ICharacter.hpp"
 # include "IMateriaSource.hpp"
 
-using namespace std;
 
 class ICharacter;
 

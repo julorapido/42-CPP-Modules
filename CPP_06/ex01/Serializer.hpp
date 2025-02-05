@@ -6,7 +6,7 @@
 /*   By: jsaintho <jsaintho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 15:08:48 by jsaintho          #+#    #+#             */
-/*   Updated: 2025/02/04 15:34:11 by jsaintho         ###   ########.fr       */
+/*   Updated: 2025/02/05 13:51:55 by jsaintho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@
 
 #include <iostream>
 #include <stdint.h>
-using namespace std;
 
 struct Data
 {

@@ -6,7 +6,7 @@
 /*   By: jsaintho <jsaintho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 14:41:02 by jsaintho          #+#    #+#             */
-/*   Updated: 2025/02/03 16:20:30 by jsaintho         ###   ########.fr       */
+/*   Updated: 2025/02/05 13:51:15 by jsaintho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@
 #include <iostream>
 #include "AForm.hpp"
 
-using namespace std;
 
 class Form;
 

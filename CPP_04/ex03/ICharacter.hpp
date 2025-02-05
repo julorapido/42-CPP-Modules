@@ -6,7 +6,7 @@
 /*   By: jsaintho <jsaintho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 15:31:26 by jsaintho          #+#    #+#             */
-/*   Updated: 2025/01/31 12:35:28 by jsaintho         ###   ########.fr       */
+/*   Updated: 2025/02/05 13:50:52 by jsaintho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@
 # include "AMateria.hpp"
 # include "IMateriaSource.hpp"
 
-using namespace std;
 
 class AMateria;
 

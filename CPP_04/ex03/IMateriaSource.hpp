@@ -6,7 +6,7 @@
 /*   By: jsaintho <jsaintho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 12:33:14 by jsaintho          #+#    #+#             */
-/*   Updated: 2025/01/31 12:37:21 by jsaintho         ###   ########.fr       */
+/*   Updated: 2025/02/05 13:50:54 by jsaintho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@
 # include "AMateria.hpp"
 # include "ICharacter.hpp"
 
-using namespace std;
 
 class ICharacter;
 class AMateria;

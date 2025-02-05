@@ -6,7 +6,7 @@
 /*   By: jsaintho <jsaintho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 11:10:06 by jsaintho          #+#    #+#             */
-/*   Updated: 2025/02/03 16:06:34 by jsaintho         ###   ########.fr       */
+/*   Updated: 2025/02/05 13:51:33 by jsaintho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@
 
 
 #include <iostream>
-using namespace std;
 
 class Bureaucrat;
 

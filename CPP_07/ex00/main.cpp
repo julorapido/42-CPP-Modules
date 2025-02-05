@@ -6,12 +6,11 @@
 /*   By: jsaintho <jsaintho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 16:35:57 by jsaintho          #+#    #+#             */
-/*   Updated: 2025/02/04 17:29:21 by jsaintho         ###   ########.fr       */
+/*   Updated: 2025/02/05 13:52:16 by jsaintho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
-using namespace std;
 
 
 template<typename T>

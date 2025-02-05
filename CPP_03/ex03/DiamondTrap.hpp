@@ -6,7 +6,7 @@
 /*   By: jsaintho <jsaintho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 17:51:02 by jsaintho          #+#    #+#             */
-/*   Updated: 2025/01/27 18:08:30 by jsaintho         ###   ########.fr       */
+/*   Updated: 2025/02/05 13:50:04 by jsaintho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@
 # include "ScavTrap.hpp"
 # include "FragTrap.hpp"
 
-using namespace std;
 
 class DiamondTrap : public ScavTrap, public FragTrap
 {

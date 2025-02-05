@@ -6,7 +6,7 @@
 /*   By: jsaintho <jsaintho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 16:52:05 by jsaintho          #+#    #+#             */
-/*   Updated: 2025/01/27 18:02:48 by jsaintho         ###   ########.fr       */
+/*   Updated: 2025/02/05 13:50:06 by jsaintho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@
 # include <iostream>
 # include "ClapTrap.hpp"
 
-using namespace std;
 
 class FragTrap : virtual public ClapTrap
 {

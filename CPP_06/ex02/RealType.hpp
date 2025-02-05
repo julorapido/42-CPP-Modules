@@ -6,7 +6,7 @@
 /*   By: jsaintho <jsaintho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 15:45:01 by jsaintho          #+#    #+#             */
-/*   Updated: 2025/02/04 16:30:05 by jsaintho         ###   ########.fr       */
+/*   Updated: 2025/02/05 13:52:04 by jsaintho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@
 # include <cstdlib>
 # include <ctime>
 
-using namespace std;
 class Base
 {
     public:

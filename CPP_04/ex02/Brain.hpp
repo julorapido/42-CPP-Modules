@@ -6,7 +6,7 @@
 /*   By: jsaintho <jsaintho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 13:31:23 by jsaintho          #+#    #+#             */
-/*   Updated: 2025/01/28 14:08:50 by jsaintho         ###   ########.fr       */
+/*   Updated: 2025/02/05 13:50:43 by jsaintho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 # define BRAIN_HPP
 # include <iostream>
 
-using namespace std;
 
 class Brain
 {

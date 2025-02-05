@@ -6,7 +6,7 @@
 /*   By: jsaintho <jsaintho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 14:13:01 by jsaintho          #+#    #+#             */
-/*   Updated: 2025/02/04 14:53:29 by jsaintho         ###   ########.fr       */
+/*   Updated: 2025/02/05 13:52:14 by jsaintho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@
 #include <cctype>
 #include <iomanip>
 
-using namespace std;
 
 class ScalarConverter
 {

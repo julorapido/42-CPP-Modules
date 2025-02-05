@@ -6,7 +6,7 @@
 /*   By: jsaintho <jsaintho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 14:41:02 by jsaintho          #+#    #+#             */
-/*   Updated: 2025/02/03 12:10:22 by jsaintho         ###   ########.fr       */
+/*   Updated: 2025/02/05 13:51:06 by jsaintho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,6 @@
 # define BUREAUCRAT_HPP
 
 #include <iostream>
-using namespace std;
-
-
 
 
 class Bureaucrat

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Intern.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jsaintho <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: jsaintho <jsaintho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 16:36:05 by jsaintho          #+#    #+#             */
-/*   Updated: 2025/02/03 16:39:02 by jsaintho         ###   ########.fr       */
+/*   Updated: 2025/02/05 13:51:45 by jsaintho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 # define INTERN_HPP
 
 #include <iostream>
-using namespace std;
 
 class Intern
 {
