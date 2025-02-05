@@ -1,5 +1,5 @@
-exec = ex00
-src = *.cpp
+exec = ex02
+src = *.cpp 
 src_obj = $(exec.cpp=.o)
 cc = c++
 flags = -Wall -Wextra -std=c++98
