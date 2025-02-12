@@ -6,7 +6,7 @@
 /*   By: jsaintho <jsaintho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 12:02:32 by jsaintho          #+#    #+#             */
-/*   Updated: 2025/02/11 16:59:51 by jsaintho         ###   ########.fr       */
+/*   Updated: 2025/02/12 14:01:43 by jsaintho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,53 +38,85 @@ static int open_file(BitcoinExchange *b, std::string s, int mode = 0)
 static int  get_lines(BitcoinExchange *b)
 {
     std::ifstream *a[2] = {&(b->infile), &(b->csv)};
-    std::deque<std::string> *c[2] = {&(b->dq_infile), &(b->dq_csv)};
+    std::deque<std::pair<std::string, float> >  *c[2] = {&(b->dq_infile), &(b->dq_csv)};
 
     for(int i = 0; i < 2; i ++)
     {
+        int l = 0;
         std::string line;
         while (std::getline(*a[i], line))
         {
             // each line
             if(i == 0) // infile parsing
             {
+                        l++;
                 if(line == ("date | value"))
                     continue;
                 size_t p = line.find("|");
                 if(p >= line.length())
-                    return -1;
-                std::string beforePipe = line.substr(0, p);
+                {
+                    (*c[i]).push_back(std::pair<std::string, float>(
+                        std::string("Error: bad input => " + line), (0)
+                    ));    
+                    continue;
+                }
+                std::string beforePipe = line.substr(0, p - 1);
                 std::string aftPipe = line.substr(p + 1, line.length());
-                std::cout << aftPipe.length() << aftPipe << "-"<< std::endl;
-                std::cout << beforePipe.length() << beforePipe << "-"<< std::endl;
-                if(beforePipe.length() != 11 || // YYYY-MM-DD
+                if(beforePipe.length() != 10 || // YYYY-MM-DD
                     (aftPipe.length() > 10 || aftPipe.length() == 0) // INT
                 ){
-                    return -2;
+                    (*c[i]).push_back(std::pair<std::string, float>(
+                        std::string("Error: invalid formats => " + line), (0)
+                    ));    
+                    continue;                
                 }else
                 {
                     // parse left part
                     for(unsigned long i = 0; i < beforePipe.length(); i++)
                     {
-                        if((i >= 0 && i < 4) || (i >= 5 && i < 7)){
-                            if(! (beforePipe[i] >= '0' && beforePipe[i] <= '9'))
-                                return -3;
+                        if((i != 4) && (i != 7) && (i < 10))
+                        {
+                            if(! (beforePipe[i] >= '0' && beforePipe[i] <= '9')){
+                                beforePipe = ("Error: not a valid Date");
+                                break;
+                            }
                         }else{
-                            std:cout << "beforePipe" << i << " = " << beforePipe[i] << std::endl;
-                            if(!(beforePipe[i] == '-') && !(beforePipe[i] == ' '))
-                                 return -4;
+                            if(!(beforePipe[i] == '-' || beforePipe[i] == ' ')){
+                                beforePipe = ("Error: not a valid Date");
+                                break;
+                            }
                         }
                     }
                     // parse right part
                     for(unsigned long i = 0; i < aftPipe.length(); i++)
                     {   
-                        if(!(aftPipe[i] >= '0' && aftPipe[i] <='9') && !(aftPipe[i] == ' '))
-                            return -5; 
+                        if(!(aftPipe[i] >= '0' && aftPipe[i] <='9') 
+                            && (aftPipe[i] != ' ' && aftPipe[i] != '.' && aftPipe[i] != '-')
+                        )
+                        {
+                            beforePipe = ("Error: not a valid Date");
+                            break;
+                        }
                     }
+                    // Create a stringstream object
+                    int nn; std::stringstream ss(aftPipe); ss >> nn;
+                    long long ln; std::stringstream sw(aftPipe); sw >> ln;
+                    if(nn < 0)
+                        beforePipe = ("Error: not a positive number.");
+                    if(ln >= 1000)
+                        beforePipe = ("Error: too large number.");
+                    float n; std::stringstream as(aftPipe); as >> n;
+                    (*c[i]).push_back(std::pair<std::string, float>(beforePipe, (n)));    
                 }
             }else // csv
             {
-                (*c[i]).push_front(line);
+                size_t pos = line.find(',');
+                if(pos == line.length())
+                    return (-8);
+                std::string left = line.substr(0, pos);
+                std::string right = line.substr(pos + 1, line.length());
+                float n; std::stringstream as(right); as >> n;
+                (*c[i]).push_back(std::pair<std::string, float>(left, (n)));    
             }
         }
         if ((*a[i]).fail() && !(*a[i]).eof()) {
@@ -94,10 +126,54 @@ static int  get_lines(BitcoinExchange *b)
     }
     return (0);
 }
+static unsigned long long lexicographical_v(const std::string& str)
+{
+    unsigned long long value = 0;
 
+    for (size_t i = 0; i < str.length(); ++i) {
+        // Shift previous value to the left (multiply by 256 to make room for the next character)
+        value *= 256;
+        // Add the ASCII value of the current character
+        value += static_cast<unsigned char>(str[i]);
+    }
+
+    return value;
+}
 static void convertBitcoin(BitcoinExchange *b)
 {
-    
+    for(std::deque<std::pair<std::string, float> >::iterator it = (b->dq_infile.begin());
+        it != (b->dq_infile.end()); it++)
+    {
+        if ((it->first).find("Error:") != std::string::npos)
+        {
+            std::cout << "\033[37m"<< it->first << "\033[0m"<< std::endl;
+        }
+        else
+        {
+            unsigned long long f_date = lexicographical_v((b->dq_csv.begin())->first) 
+                - lexicographical_v(it->first);
+            std::pair<std::string, float> selected = *(b->dq_csv.end());
+            // find closest date of deque->infile inside the csv
+            for(std::deque<std::pair<std::string, float> >::iterator jt = (b->dq_csv.begin());
+                jt != (b->dq_csv.end());
+                jt++)
+            {
+                if((lexicographical_v(jt->first) 
+                - lexicographical_v(it->first)) < (f_date))
+                {
+                    f_date = ((lexicographical_v(jt->first) 
+                    - lexicographical_v(it->first)) < (f_date));
+                    selected = *jt;
+                }
+            }
+            std::cout << it->first << " => " << it->second << " => " 
+                << (it->second * selected.second) << std::endl;
+            // std::cout << "Comparing [\t{"
+            // << it->first << ": " << it->second 
+            // << "} vs {" <<
+            // selected.first << ": " << selected.second << "}\t]" << std::endl;
+        }
+    }
 }
 
 int main(int argc, char **argv)
@@ -117,10 +193,12 @@ int main(int argc, char **argv)
     int gl = get_lines(bc);
     if(gl != 0)
     {
-        std::cout << "Error(" << gl <<")parsing: "<< argv[1] << std::endl;       
+        std::cout << "\033[31m- Error(" << gl <<") parsing: \033[0m'"<< argv[1] 
+            << "'\033[33m line: " << bc->parsing_err_line <<"\033[0m"<< std::endl;       
         delete bc;
         return (1);
-    }
+    }else
+        std::cout << "\033[32m- Valid file: "<< argv[1] <<" !\033[0m"<< std::endl;   
     convertBitcoin(bc);
     delete bc;
     return (0);

@@ -6,7 +6,7 @@
 /*   By: jsaintho <jsaintho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 12:06:22 by jsaintho          #+#    #+#             */
-/*   Updated: 2025/02/11 15:14:16 by jsaintho         ###   ########.fr       */
+/*   Updated: 2025/02/12 13:58:59 by jsaintho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,16 +23,20 @@
 #include <fstream>
 #include <deque>
 #include <utility>
+#include <sstream>
+#include <cstdlib>
+#include <limits.h>
 
 class BitcoinExchange
 {
     private:
  
     public:
-        std::deque<std::string> dq_csv;
-        std::deque<std::string> dq_infile;
+        std::deque<std::pair<std::string, float> > dq_csv;
+        std::deque<std::pair<std::string, float> > dq_infile;
         std::ifstream infile;
         std::ifstream csv;
+        int             parsing_err_line;
         BitcoinExchange(void);
         ~BitcoinExchange();
 };
