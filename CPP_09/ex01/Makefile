@@ -1,5 +1,5 @@
-exec = btc
-src = main.cpp BitcoinExchange.cpp
+exec = RPN
+src = main.cpp RPN.cpp
 src_obj = $(exec.cpp=.o)
 cc = c++
 flags = -Wall -Wextra -std=c++98

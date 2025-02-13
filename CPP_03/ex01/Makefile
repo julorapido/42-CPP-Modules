@@ -1,5 +1,5 @@
 exec =  ScavTrap
-src = *.cpp
+src = ClapTrap.cpp ScavTrap.cpp main.cpp
 src_obj = $(exec.c=.o)
 cc = c++
 flags = -Wall -Wextra -Werror -std=c++98

@@ -6,7 +6,7 @@
 /*   By: jsaintho <jsaintho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 12:02:32 by jsaintho          #+#    #+#             */
-/*   Updated: 2025/02/12 14:01:43 by jsaintho         ###   ########.fr       */
+/*   Updated: 2025/02/13 12:18:25 by jsaintho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ static int open_file(BitcoinExchange *b, std::string s, int mode = 0)
     return 0;
 }
 
-static int  get_lines(BitcoinExchange *b)
+static void get_lines(BitcoinExchange *b)
 {
     std::ifstream *a[2] = {&(b->infile), &(b->csv)};
     std::deque<std::pair<std::string, float> >  *c[2] = {&(b->dq_infile), &(b->dq_csv)};
@@ -103,7 +103,7 @@ static int  get_lines(BitcoinExchange *b)
                     long long ln; std::stringstream sw(aftPipe); sw >> ln;
                     if(nn < 0)
                         beforePipe = ("Error: not a positive number.");
-                    if(ln >= 1000)
+                    if(ln > 1000)
                         beforePipe = ("Error: too large number.");
                     float n; std::stringstream as(aftPipe); as >> n;
                     (*c[i]).push_back(std::pair<std::string, float>(beforePipe, (n)));    
@@ -111,8 +111,6 @@ static int  get_lines(BitcoinExchange *b)
             }else // csv
             {
                 size_t pos = line.find(',');
-                if(pos == line.length())
-                    return (-8);
                 std::string left = line.substr(0, pos);
                 std::string right = line.substr(pos + 1, line.length());
                 float n; std::stringstream as(right); as >> n;
@@ -124,7 +122,6 @@ static int  get_lines(BitcoinExchange *b)
         }
         (*a[i]).close();
     }
-    return (0);
 }
 static unsigned long long lexicographical_v(const std::string& str)
 {
@@ -190,15 +187,7 @@ int main(int argc, char **argv)
         delete bc;
         return (1);
     }
-    int gl = get_lines(bc);
-    if(gl != 0)
-    {
-        std::cout << "\033[31m- Error(" << gl <<") parsing: \033[0m'"<< argv[1] 
-            << "'\033[33m line: " << bc->parsing_err_line <<"\033[0m"<< std::endl;       
-        delete bc;
-        return (1);
-    }else
-        std::cout << "\033[32m- Valid file: "<< argv[1] <<" !\033[0m"<< std::endl;   
+    get_lines(bc);
     convertBitcoin(bc);
     delete bc;
     return (0);

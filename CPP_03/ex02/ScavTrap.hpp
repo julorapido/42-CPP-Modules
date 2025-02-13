@@ -6,7 +6,7 @@
 /*   By: jsaintho <jsaintho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 16:52:05 by jsaintho          #+#    #+#             */
-/*   Updated: 2025/02/05 13:49:53 by jsaintho         ###   ########.fr       */
+/*   Updated: 2025/02/13 15:24:37 by jsaintho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,10 @@ class ScavTrap : public ClapTrap
         void            attack(const std::string &target);
         void            guardGate(void);
     private:
-	    std::string     _name;
-		unsigned int    _hit_pts;
-		unsigned int    _energy_pts;
-		unsigned int    _attack_dmg;
+	    // std::string     _name;
+		// unsigned int    _hit_pts;
+		// unsigned int    _energy_pts;
+		// unsigned int    _attack_dmg;
         bool            _guarding_gate;
 };
 

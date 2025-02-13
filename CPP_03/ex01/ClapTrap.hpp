@@ -28,7 +28,7 @@ class ClapTrap
         void    beRepaired(unsigned int amount);
         ~ClapTrap();
 
-    private:
+    protected:
 	    std::string     _name;
 		unsigned int    _hit_pts;
 		unsigned int    _energy_pts;

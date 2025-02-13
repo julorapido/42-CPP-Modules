@@ -1,6 +1,6 @@
 exec =  DiamondTrap
-src = *.cpp
-src_obj = $(exec.c=.o)
+src = DiamondTrap.cpp ScavTrap.cpp FragTrap.cpp ClapTrap.cpp main.cpp
+src_obj = $(exec.cpp=.o)
 cc = c++
 flags = -Wall -Wextra -Werror -std=c++98
 

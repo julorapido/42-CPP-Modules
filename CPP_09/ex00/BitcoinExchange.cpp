@@ -6,7 +6,7 @@
 /*   By: jsaintho <jsaintho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 12:03:41 by jsaintho          #+#    #+#             */
-/*   Updated: 2025/02/12 14:02:01 by jsaintho         ###   ########.fr       */
+/*   Updated: 2025/02/13 12:31:04 by jsaintho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,4 +21,14 @@ BitcoinExchange::BitcoinExchange(void)
 BitcoinExchange::~BitcoinExchange(void)
 {
     // std::cout << "- BitcoinExchange Class destroyed." << std::endl; 
+}
+
+BitcoinExchange &BitcoinExchange::operator=(const BitcoinExchange &cpy)
+{
+    (void)(cpy);
+    return *this;
+}
+BitcoinExchange::BitcoinExchange(const BitcoinExchange &copy)
+{
+    *this = copy;
 }

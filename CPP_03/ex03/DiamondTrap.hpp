@@ -6,7 +6,7 @@
 /*   By: jsaintho <jsaintho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 17:51:02 by jsaintho          #+#    #+#             */
-/*   Updated: 2025/02/05 13:50:04 by jsaintho         ###   ########.fr       */
+/*   Updated: 2025/02/13 15:26:16 by jsaintho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,10 +34,10 @@ class DiamondTrap : public ScavTrap, public FragTrap
         void            highFivesGuys(void);
         void            whoAmI(void);
     private:
-	    std::string     _name;
-		unsigned int    _hit_pts;
-		unsigned int    _energy_pts;
-		unsigned int    _attack_dmg;
+	    // std::string     _name;
+		// unsigned int    _hit_pts;
+		// unsigned int    _energy_pts;
+		// unsigned int    _attack_dmg;
 };
 
 #endif

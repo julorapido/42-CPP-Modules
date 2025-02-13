@@ -1,6 +1,6 @@
 exec =  ClapTrap
-src = *.cpp
-src_obj = $(exec.c=.o)
+src = ClapTrap.cpp main.cpp
+src_obj = $(exec.cpp=.o)
 cc = c++
 flags = -Wall -Wextra -Werror -std=c++98
 

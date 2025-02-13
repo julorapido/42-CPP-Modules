@@ -6,7 +6,7 @@
 /*   By: jsaintho <jsaintho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 12:06:22 by jsaintho          #+#    #+#             */
-/*   Updated: 2025/02/12 13:58:59 by jsaintho         ###   ########.fr       */
+/*   Updated: 2025/02/13 12:30:04 by jsaintho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,8 @@ class BitcoinExchange
         int             parsing_err_line;
         BitcoinExchange(void);
         ~BitcoinExchange();
+        BitcoinExchange(const BitcoinExchange &copy);
+        BitcoinExchange &operator=(const BitcoinExchange &cpy);
 };
 
 #endif

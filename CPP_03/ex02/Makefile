@@ -1,5 +1,5 @@
 exec =  FragTrap
-src = *.cpp
+src = main.cpp ClapTrap.cpp ScavTrap.cpp FragTrap.cpp
 src_obj = $(exec.c=.o)
 cc = c++
 flags = -Wall -Wextra -Werror -std=c++98
