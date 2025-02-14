@@ -1,6 +1,6 @@
 exec = Abstract
-src = *.cpp
-src_obj = $(exec.c=.o)
+src = main.cpp Brain.cpp Animal.cpp
+src_obj = $(exec.cpp=.o)
 cc = c++
 flags = -Wall -Wextra -Werror -std=c++98
 

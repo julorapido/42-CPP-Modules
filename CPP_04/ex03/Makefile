@@ -1,6 +1,6 @@
 exec = InterfaceRecap
-src = *.cpp
-src_obj = $(exec.c=.o)
+src = main.cpp ICharacter.cpp AMateria.cpp IMateriaSource.cpp
+src_obj = $(exec.cpp=.o)
 cc = c++
 flags = -Wall -Wextra -Werror -std=c++98
 
