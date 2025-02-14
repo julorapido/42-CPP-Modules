@@ -6,7 +6,7 @@
 /*   By: jsaintho <jsaintho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 12:53:07 by jsaintho          #+#    #+#             */
-/*   Updated: 2025/01/27 18:04:49 by jsaintho         ###   ########.fr       */
+/*   Updated: 2025/02/14 15:15:53 by jsaintho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 #include "ScavTrap.hpp"
 #include "DiamondTrap.hpp"
 
+// int a = 10;
 int main()
 {
 	std::cout << "### TESTING CLAPTRAP ###\n" << std::endl;
