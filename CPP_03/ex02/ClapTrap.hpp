@@ -22,8 +22,10 @@ class ClapTrap
     public:
         ClapTrap();
         ClapTrap(std::string name);
+        ClapTrap(const ClapTrap &cpy);
         ClapTrap &operator=(const ClapTrap &);
-        void    attack(const std::string &target);
+        // virtual so that scavtrap can override attack()
+        virtual void    attack(const std::string &target);
         void    takeDamage(unsigned int amount);
         void    beRepaired(unsigned int amount);
         ~ClapTrap();

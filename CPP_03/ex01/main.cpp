@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jsaintho <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: jsaintho <jsaintho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 12:53:07 by jsaintho          #+#    #+#             */
-/*   Updated: 2025/01/27 12:53:57 by jsaintho         ###   ########.fr       */
+/*   Updated: 2025/02/17 14:11:50 by jsaintho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	main(int argc, char **argv)
 	(void)(argv);
 	ClapTrap c1 = ClapTrap("wers");
 	ClapTrap c2 = ClapTrap("weewrwer");
-	ScavTrap scav = ScavTrap("SCAV_1");
+	ScavTrap scav("SCAV_1");
 	ScavTrap scav2 = ScavTrap("SCAV_2");
 
 	ScavTrap scav3 = (scav);

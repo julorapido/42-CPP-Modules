@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ClapTrap.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jsaintho <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: jsaintho <jsaintho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 14:53:07 by jsaintho          #+#    #+#             */
-/*   Updated: 2025/01/27 17:55:49 by jsaintho         ###   ########.fr       */
+/*   Updated: 2025/02/17 14:19:31 by jsaintho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,14 @@ ClapTrap::ClapTrap(std::string name)
 	this->_hit_pts = 10; // 10 HP
 }
 
+ClapTrap::ClapTrap(const ClapTrap &copy)
+{
+    this->_hit_pts = copy._hit_pts;
+	this->_energy_pts = copy._energy_pts;
+	this->_attack_dmg = copy._attack_dmg;
+	std::cout << "ClapTrap Copy Constructor called" << std::endl;
+}
+
 ClapTrap::~ClapTrap()
 {
     std::cout << "-1 ClapTrap (destroyed)" << std::endl;
@@ -57,11 +65,14 @@ void    ClapTrap::attack(const std::string& target)
 {
     if (this->_energy_pts > 0 && this->_hit_pts > 0)
 	{
-		std::cout << "\033[33mClapTrap " << this->_name << " attacks " << target << ", causing [" << this->_attack_dmg << " pts] of damage! \033[0m" << std::endl;
+		std::cout << "\033[33mClapTrap " << this->_name << " attacks " 
+		<< target << "-> [" << this->_attack_dmg << " pts] of dmg! \033[0m" <<
+		"[ " << this->_energy_pts << " mana]" << std::endl;
 		this->_energy_pts--;
 	}
 	else
-		std::cout << "\033[31mClapTrap " << this->_name << " is not able to attack " << target << ", because he has no energy points left.\033[0m" << std::endl;
+		std::cout << "\033[31mClapTrap " << this->_name << " is not able to attack " << 
+		target << ", because he has no energy points left.\033[0m" << std::endl;
 }
 
 void    ClapTrap::takeDamage(unsigned int amount)

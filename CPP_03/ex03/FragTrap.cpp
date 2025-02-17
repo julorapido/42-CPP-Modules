@@ -6,19 +6,18 @@
 /*   By: jsaintho <jsaintho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 16:51:59 by jsaintho          #+#    #+#             */
-/*   Updated: 2025/01/27 17:44:23 by jsaintho         ###   ########.fr       */
+/*   Updated: 2025/02/17 14:21:31 by jsaintho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "FragTrap.hpp"
 
 
-FragTrap::FragTrap(): ClapTrap()
+FragTrap::FragTrap(): ClapTrap("FR4G-TRAP")
 {
 	this->_hit_pts = 100;
 	this->_energy_pts = 100;
 	this->_attack_dmg = 30;
-    this->_name = std::string("FR4G-TRAP");
 	std::cout << "FragTrap Default Constructor called" << std::endl;
 }
 
@@ -35,8 +34,7 @@ FragTrap::FragTrap(std::string name): ClapTrap(name)
 	this->_hit_pts = 100;
 	this->_energy_pts = 100;
 	this->_attack_dmg = 30;
-    this->_name = name;
-	std::cout << "\033[34mFragTrap Constructor for name: '" << this->_name << "' called.\033[0m" << std::endl;
+	std::cout << "\033[34m +1FragTrap Constructor for name: '" << this->_name << "' called.\033[0m" << std::endl;
 }
 
 FragTrap::~FragTrap()
@@ -55,18 +53,6 @@ FragTrap &FragTrap::operator=(const FragTrap &src)
 	return *this;
 }
 
-void	FragTrap::attack(const std::string &target)
-{
-	if (this->_energy_pts > 0 && this->_hit_pts > 0)
-	{
-		std::cout << "\033[34mFragTrap " << this->_name << " attacks " << target << ", causing " << this->_attack_dmg << " points of damage! \033[0m" << std::endl;
-		this->_energy_pts--;
-	}
-	else if (this->_energy_pts == 0)
-		std::cout << "\033[31mFragTrap " << this->_name << " cant attack " << target << ", (not enought EP).\033[0m" << std::endl;
-	else
-		std::cout << "\033[31mFragTrap " << this->_name << " cant attack " << target << ", (not enough HP).\033[0m" << std::endl;
-}
 
 void	FragTrap::highFivesGuys(void)
 {

@@ -6,7 +6,7 @@
 /*   By: jsaintho <jsaintho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 17:50:51 by jsaintho          #+#    #+#             */
-/*   Updated: 2025/01/27 18:08:47 by jsaintho         ###   ########.fr       */
+/*   Updated: 2025/02/17 14:29:46 by jsaintho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 
 // Constructors
-DiamondTrap::DiamondTrap(): ClapTrap("defaultDT_clap_trap")
+DiamondTrap::DiamondTrap(): ClapTrap("defaultDT_clap_trap"), ScavTrap()
 {
 	this->_name = "defaultDT";
 	this->_hit_pts = FragTrap::_hit_pts;
@@ -23,18 +23,17 @@ DiamondTrap::DiamondTrap(): ClapTrap("defaultDT_clap_trap")
 	std::cout << "DiamondTrap Default Constructor called" << std::endl;
 }
 
-DiamondTrap::DiamondTrap(const DiamondTrap &copy): ClapTrap(copy), ScavTrap(copy), FragTrap(copy)
+DiamondTrap::DiamondTrap(const DiamondTrap &copy): ClapTrap(copy),  FragTrap(copy), ScavTrap(copy)
 {
 	*this = copy;
 	std::cout << "DiamondTrap Copy Constructor called" << std::endl;
 }
 
-DiamondTrap::DiamondTrap(std::string name): ClapTrap(name + "_clap_trap")
+DiamondTrap::DiamondTrap(std::string name): ClapTrap(name), FragTrap(name), ScavTrap(name), _name(name)
 {
-	this->_hit_pts = 100;
-	this->_energy_pts = 100;
-	this->_attack_dmg = 30;
-    this->_name = name;
+	_hit_pts = FragTrap::_hit_pts;     // Set hit points from FragTrap
+	_energy_pts = ScavTrap::_energy_pts; // Set energy points from ScavTrap
+	_attack_dmg = FragTrap::_attack_dmg; // Set attack damage from FragTrap
 	std::cout << "\033[34mDiamondTrap Constructor for name: '" << this->_name << "' called.\033[0m" << std::endl;
 }
 
@@ -56,15 +55,7 @@ DiamondTrap &DiamondTrap::operator=(const DiamondTrap &src)
 
 void	DiamondTrap::attack(const std::string &target)
 {
-	if (this->_energy_pts > 0 && this->_hit_pts > 0)
-	{
-		std::cout << "\033[34mDiamondTrap " << this->_name << " attacks " << target << ", causing " << this->_attack_dmg << " points of damage! \033[0m" << std::endl;
-		this->_energy_pts--;
-	}
-	else if (this->_energy_pts == 0)
-		std::cout << "\033[31mDiamondTrap " << this->_name << " cant attack " << target << ", (not enought EP).\033[0m" << std::endl;
-	else
-		std::cout << "\033[31mDiamondTrap " << this->_name << " cant attack " << target << ", (not enough HP).\033[0m" << std::endl;
+	ScavTrap::attack(target);  // Calls the attack method from ScavTrap
 }
 
 void	DiamondTrap::highFivesGuys(void)
@@ -74,7 +65,5 @@ void	DiamondTrap::highFivesGuys(void)
 
 void    DiamondTrap::whoAmI(void)
 {
-    std::cout << "Hello i am a DiamondTrap named " << this->_name <<
-	" and i am originated from the ClapTrap named " << ClapTrap::_name << "." <<
-	std::endl;
+	std::cout << "I am DiamondTrap, my name is " << _name << " and my ClapTrap name is " << ClapTrap::_name << std::endl;
 }

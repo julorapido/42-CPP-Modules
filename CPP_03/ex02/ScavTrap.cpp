@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ScavTrap.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jsaintho <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: jsaintho <jsaintho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 16:51:59 by jsaintho          #+#    #+#             */
-/*   Updated: 2025/01/27 16:52:00 by jsaintho         ###   ########.fr       */
+/*   Updated: 2025/02/17 14:12:16 by jsaintho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,6 @@ ScavTrap::ScavTrap(): ClapTrap()
 
 ScavTrap::ScavTrap(const ScavTrap &copy): ClapTrap(copy)
 {
-    this->_hit_pts = copy._hit_pts;
-	this->_energy_pts = copy._energy_pts;
-	this->_attack_dmg = copy._attack_dmg;
-	this->_guarding_gate = copy._guarding_gate;
 	std::cout << "ScavTrap Copy Constructor called" << std::endl;
 }
 

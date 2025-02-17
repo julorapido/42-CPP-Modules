@@ -3,32 +3,27 @@
 /*                                                        :::      ::::::::   */
 /*   ScavTrap.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jsaintho <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: jsaintho <jsaintho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 16:51:59 by jsaintho          #+#    #+#             */
-/*   Updated: 2025/01/27 16:52:00 by jsaintho         ###   ########.fr       */
+/*   Updated: 2025/02/17 14:22:01 by jsaintho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ScavTrap.hpp"
 
 
-ScavTrap::ScavTrap(): ClapTrap()
+ScavTrap::ScavTrap(): ClapTrap("SC4V-TRAP")
 {
 	this->_hit_pts = 100;
 	this->_energy_pts = 50;
 	this->_attack_dmg = 20;
 	this->_guarding_gate = false;
-    this->_name = std::string("SC4V-TRAP");
 	std::cout << "ScavTrap Default Constructor called" << std::endl;
 }
 
 ScavTrap::ScavTrap(const ScavTrap &copy): ClapTrap(copy)
 {
-    this->_hit_pts = copy._hit_pts;
-	this->_energy_pts = copy._energy_pts;
-	this->_attack_dmg = copy._attack_dmg;
-	this->_guarding_gate = copy._guarding_gate;
 	std::cout << "ScavTrap Copy Constructor called" << std::endl;
 }
 
@@ -38,7 +33,6 @@ ScavTrap::ScavTrap(std::string name): ClapTrap(name)
 	this->_energy_pts = 50;
 	this->_attack_dmg = 20;
 	this->_guarding_gate = false;
-    this->_name = name;
 	std::cout << "\033[34mScavTrap Constructor for name: '" << this->_name << "' called.\033[0m" << std::endl;
 }
 

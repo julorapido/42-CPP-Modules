@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jsaintho <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: jsaintho <jsaintho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 12:53:07 by jsaintho          #+#    #+#             */
-/*   Updated: 2025/01/27 12:53:57 by jsaintho         ###   ########.fr       */
+/*   Updated: 2025/02/17 13:33:41 by jsaintho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,15 @@ int	main(int argc, char **argv)
 	(void)(argc);
 	(void)(argv);
 	ClapTrap c1 = ClapTrap("wers");
-	ClapTrap c2 = ClapTrap("weewrwer");
+	ClapTrap c2 = ClapTrap("TOM");
+	ClapTrap c3;
 
 	// c1.attack(c2);
 	c1.beRepaired(10);
 	c1.beRepaired(10);	
 	c1.beRepaired(10);
 	c1.attack("c2");
+	c2.attack("c2");
 	for(int i = 0; i < 12; i ++)
 	{
 		c1.attack("Le BeauJack N-");

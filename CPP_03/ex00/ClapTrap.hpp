@@ -20,8 +20,10 @@
 class ClapTrap
 {
     public:
+        ClapTrap();
         ClapTrap(std::string name);
         ClapTrap &operator=(const ClapTrap &);
+        ClapTrap(const ClapTrap &cpy);
         void    attack(const std::string &target);
         void    takeDamage(unsigned int amount);
         void    beRepaired(unsigned int amount);
