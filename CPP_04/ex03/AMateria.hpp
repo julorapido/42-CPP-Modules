@@ -33,6 +33,7 @@ class AMateria
 
 		std::string const	&getType() const;
 
+		// virtual for [Ice & Cure]
 		virtual				~AMateria();
 		virtual AMateria	*clone() const = 0;
 		virtual void		use(ICharacter &target);
@@ -45,8 +46,8 @@ class Cure: public AMateria
 		Cure(const Cure &src);
 		Cure	&operator =(const Cure &src);
 
-		virtual	~Cure();
-
+		// those three are overriding
+		~Cure();
 		Cure	*clone() const;
 		void	use(ICharacter &target);
 
@@ -58,8 +59,8 @@ class Ice: public AMateria
 		Ice(const Ice &src);
 		Ice		&operator =(const Ice &src);
 
-		virtual	~Ice();
-
+		// those three are overriding
+		~Ice();
 		Ice		*clone() const;
 		void	use(ICharacter &target);
 

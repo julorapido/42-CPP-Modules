@@ -23,7 +23,7 @@ class WrongAnimal
 		std::string	type;
 	public:
 		WrongAnimal();
-		~WrongAnimal();
+		virtual ~WrongAnimal();
 		WrongAnimal & operator=(WrongAnimal const & rhs);
 		virtual void		makeSound(void) const;
 		virtual std::string	getType(void) const;
@@ -33,6 +33,6 @@ class WrongCat: public WrongAnimal
 {
 	public:
 		WrongCat();
-		~WrongCat();
+		~WrongCat(); // overriding wrong animal destructor
 };
 #endif

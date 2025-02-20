@@ -6,7 +6,7 @@
 /*   By: jsaintho <jsaintho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 12:08:19 by jsaintho          #+#    #+#             */
-/*   Updated: 2025/02/05 13:50:13 by jsaintho         ###   ########.fr       */
+/*   Updated: 2025/02/20 12:25:09 by jsaintho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ class Animal
 		std::string	type;
 	public:
 		Animal();
-		~Animal();
+		virtual ~Animal();
 		Animal & operator=(Animal const & rhs);
 		virtual void		makeSound(void) const;
 		virtual std::string	getType(void) const;
@@ -32,7 +32,7 @@ class Dog: public Animal
 {
 	public:
 		Dog();
-		~Dog();
+		~Dog();// override animal destructor
 };
 
 
@@ -40,6 +40,6 @@ class Cat: public Animal
 {
 	public:
 		Cat();
-		~Cat();
+		~Cat(); // override animal destructor too
 };
 #endif

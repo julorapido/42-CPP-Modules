@@ -39,6 +39,10 @@ WrongCat::WrongCat(): WrongAnimal()
 {
 	this->type = "WrongCat";
 }
+WrongCat::~WrongCat()
+{
+	std::cout << "\t wrong destructed. " << std::endl;
+}
 
 std::string	WrongAnimal::getType() const
 {

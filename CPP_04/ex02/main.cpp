@@ -6,7 +6,7 @@
 /*   By: jsaintho <jsaintho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 12:06:52 by jsaintho          #+#    #+#             */
-/*   Updated: 2025/01/28 15:06:48 by jsaintho         ###   ########.fr       */
+/*   Updated: 2025/02/20 12:30:22 by jsaintho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,6 @@ int	main(void)
 	delete(BB);
 
 	// try class abstraction
-	// Animal *AAa = new Animal(); ,-- wont compile
+	// Animal *AAa = new Animal(); <--- wont compile
 	return 0;
 }

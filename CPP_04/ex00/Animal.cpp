@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Animal.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jsaintho <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: jsaintho <jsaintho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 12:28:50 by jsaintho          #+#    #+#             */
-/*   Updated: 2025/01/28 12:54:04 by jsaintho         ###   ########.fr       */
+/*   Updated: 2025/02/20 12:24:55 by jsaintho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,10 +43,20 @@ Cat::Cat(): Animal()
 	this->type = "Cat";
 }
 
+Cat::~Cat()
+{
+	std::cout << "cat explosion" << std::endl;
+}
+
 
 Dog::Dog(): Animal()
 {
 	this->type = "Dog";
+}
+
+Dog::~Dog()
+{
+	std::cout << "dog disappears" << std::endl;
 }
 
 std::string	Animal::getType() const

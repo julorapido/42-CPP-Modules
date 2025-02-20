@@ -6,7 +6,7 @@
 /*   By: jsaintho <jsaintho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 12:06:52 by jsaintho          #+#    #+#             */
-/*   Updated: 2025/01/28 13:25:49 by jsaintho         ###   ########.fr       */
+/*   Updated: 2025/02/20 12:25:38 by jsaintho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,5 +30,13 @@ int	main(void)
 	std::cout << c->getType() << " " << std::endl;
 	c->makeSound(); //will output the wrongcat sound!
 	a->makeSound();
+
+	delete j;
+	delete i;
+
+	delete meta;
+
+	delete a;
+	delete c;
 	return 0;
 }

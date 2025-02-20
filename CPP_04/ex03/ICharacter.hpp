@@ -6,7 +6,7 @@
 /*   By: jsaintho <jsaintho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 15:31:26 by jsaintho          #+#    #+#             */
-/*   Updated: 2025/02/05 13:50:52 by jsaintho         ###   ########.fr       */
+/*   Updated: 2025/02/20 12:34:28 by jsaintho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,9 +48,10 @@ class Character: public ICharacter
 		Character(const Character &src);
 		Character &operator=(Character const & ref);
 
-		virtual				~Character();
+		~Character();
 
 		const std::string	&getName() const;
+		// those are overriding
 		void				equip(AMateria *m);
 		void				unequip(int idx);
 		void				use(int idx, ICharacter &target);

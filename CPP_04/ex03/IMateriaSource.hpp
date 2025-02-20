@@ -6,7 +6,7 @@
 /*   By: jsaintho <jsaintho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 12:33:14 by jsaintho          #+#    #+#             */
-/*   Updated: 2025/02/05 13:50:54 by jsaintho         ###   ########.fr       */
+/*   Updated: 2025/02/20 12:33:58 by jsaintho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ class MateriaSource: public IMateriaSource
 		MateriaSource(const MateriaSource &src);
 		MateriaSource	&operator =(const MateriaSource &src);
 
-		virtual			~MateriaSource();
+		~MateriaSource();
 
 		void			learnMateria(AMateria *m);
 		AMateria		*createMateria(const std::string &type);
