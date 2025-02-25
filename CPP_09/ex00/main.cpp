@@ -6,7 +6,7 @@
 /*   By: jsaintho <jsaintho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 12:02:32 by jsaintho          #+#    #+#             */
-/*   Updated: 2025/02/13 12:18:25 by jsaintho         ###   ########.fr       */
+/*   Updated: 2025/02/25 13:12:18 by jsaintho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ static int open_file(BitcoinExchange *b, std::string s, int mode = 0)
 static void get_lines(BitcoinExchange *b)
 {
     std::ifstream *a[2] = {&(b->infile), &(b->csv)};
-    std::deque<std::pair<std::string, float> >  *c[2] = {&(b->dq_infile), &(b->dq_csv)};
+    std::map<std::string, float>  *c[2] = {&(b->dq_infile), &(b->dq_csv)};
 
     for(int i = 0; i < 2; i ++)
     {
@@ -55,7 +55,7 @@ static void get_lines(BitcoinExchange *b)
                 size_t p = line.find("|");
                 if(p >= line.length())
                 {
-                    (*c[i]).push_back(std::pair<std::string, float>(
+                    (*c[i]).insert(std::pair<std::string, float>(
                         std::string("Error: bad input => " + line), (0)
                     ));    
                     continue;
@@ -65,7 +65,7 @@ static void get_lines(BitcoinExchange *b)
                 if(beforePipe.length() != 10 || // YYYY-MM-DD
                     (aftPipe.length() > 10 || aftPipe.length() == 0) // INT
                 ){
-                    (*c[i]).push_back(std::pair<std::string, float>(
+                    (*c[i]).insert(std::pair<std::string, float>(
                         std::string("Error: invalid formats => " + line), (0)
                     ));    
                     continue;                
@@ -106,7 +106,7 @@ static void get_lines(BitcoinExchange *b)
                     if(ln > 1000)
                         beforePipe = ("Error: too large number.");
                     float n; std::stringstream as(aftPipe); as >> n;
-                    (*c[i]).push_back(std::pair<std::string, float>(beforePipe, (n)));    
+                    (*c[i]).insert(std::pair<std::string, float>(beforePipe, (n)));    
                 }
             }else // csv
             {
@@ -114,7 +114,7 @@ static void get_lines(BitcoinExchange *b)
                 std::string left = line.substr(0, pos);
                 std::string right = line.substr(pos + 1, line.length());
                 float n; std::stringstream as(right); as >> n;
-                (*c[i]).push_back(std::pair<std::string, float>(left, (n)));    
+                (*c[i]).insert(std::pair<std::string, float>(left, (n)));    
             }
         }
         if ((*a[i]).fail() && !(*a[i]).eof()) {
@@ -138,7 +138,7 @@ static unsigned long long lexicographical_v(const std::string& str)
 }
 static void convertBitcoin(BitcoinExchange *b)
 {
-    for(std::deque<std::pair<std::string, float> >::iterator it = (b->dq_infile.begin());
+    for(std::map<std::string, float>::iterator it = (b->dq_infile.begin());
         it != (b->dq_infile.end()); it++)
     {
         if ((it->first).find("Error:") != std::string::npos)
@@ -151,7 +151,7 @@ static void convertBitcoin(BitcoinExchange *b)
                 - lexicographical_v(it->first);
             std::pair<std::string, float> selected = *(b->dq_csv.end());
             // find closest date of deque->infile inside the csv
-            for(std::deque<std::pair<std::string, float> >::iterator jt = (b->dq_csv.begin());
+            for(std::map<std::string, float>::iterator jt = (b->dq_csv.begin());
                 jt != (b->dq_csv.end());
                 jt++)
             {
@@ -165,10 +165,6 @@ static void convertBitcoin(BitcoinExchange *b)
             }
             std::cout << it->first << " => " << it->second << " => " 
                 << (it->second * selected.second) << std::endl;
-            // std::cout << "Comparing [\t{"
-            // << it->first << ": " << it->second 
-            // << "} vs {" <<
-            // selected.first << ": " << selected.second << "}\t]" << std::endl;
         }
     }
 }
