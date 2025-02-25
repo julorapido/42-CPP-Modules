@@ -6,7 +6,7 @@
 /*   By: jsaintho <jsaintho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 12:08:19 by jsaintho          #+#    #+#             */
-/*   Updated: 2025/02/05 13:50:41 by jsaintho         ###   ########.fr       */
+/*   Updated: 2025/02/25 12:18:09 by jsaintho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,9 @@ class Animal
 		Animal();
 	public:
 		virtual ~Animal();
+		Animal (Animal const & rhs);
 		Animal & operator=(Animal const & rhs);
-		virtual void		makeSound(void) const;
+		virtual void		makeSound(void) const = 0;
 		virtual std::string	getType(void) const;
 };
 
@@ -38,6 +39,7 @@ class Dog: public Animal
 		Dog(const Dog &copy);
 		Dog();
 		~Dog();
+		void makeSound(void) const;// override makeSound() (since its pure virtual)
 };
 
 
@@ -52,5 +54,6 @@ class Cat: public Animal
 		Cat(const Cat &copy);
 		Cat();
 		~Cat();
+		void makeSound(void) const;// override makeSound() (since its pure virtual)
 };
 #endif

@@ -6,7 +6,7 @@
 /*   By: jsaintho <jsaintho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 12:28:50 by jsaintho          #+#    #+#             */
-/*   Updated: 2025/01/28 14:54:13 by jsaintho         ###   ########.fr       */
+/*   Updated: 2025/02/25 12:21:02 by jsaintho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,19 +32,26 @@ Dog::~Dog()
 	std::cout << "delete dog-brain" << std::endl;
 	delete this->b;
 }
+// went pure virtual so, i comment it
+// void	Animal::makeSound() const
+// {
+// 	std::cout << "\tbrrrr!" << std::endl;\
+// }
 
-
-
-void	Animal::makeSound() const
+void	Cat::makeSound() const
 {
-	if (this->type == "Cat")
-		std::cout << "\tMiaou!" << std::endl;
-	else if (this->type == "Dog")
-		std::cout << "\twaf" << std::endl;
-	else
-		std::cout << "\tDefaultAnimal" << std::endl;
+	std::cout << "\tMiaou!" << std::endl;
 }
 
+void	Dog::makeSound() const
+{
+	std::cout << "\twaf" << std::endl;
+}
+
+Animal::Animal(Animal const & rhs) {
+    // Copy the type from the right-hand side object
+    this->type = rhs.type;
+}
 
 
 Animal & Animal::operator=(Animal const & rhs)

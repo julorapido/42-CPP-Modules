@@ -6,7 +6,7 @@
 /*   By: jsaintho <jsaintho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 12:28:50 by jsaintho          #+#    #+#             */
-/*   Updated: 2025/01/28 14:54:13 by jsaintho         ###   ########.fr       */
+/*   Updated: 2025/02/25 12:21:19 by jsaintho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,17 +34,27 @@ Dog::~Dog()
 }
 
 
-
-void	Animal::makeSound() const
-{
-	if (this->type == "Cat")
-		std::cout << "\tMiaou!" << std::endl;
-	else if (this->type == "Dog")
-		std::cout << "\twaf" << std::endl;
-	else
-		std::cout << "\tDefaultAnimal" << std::endl;
+Animal::Animal(Animal const & rhs) {
+    // Copy the type from the right-hand side object
+    this->type = rhs.type;
 }
 
+
+// went pure virtual so, i comment it
+// void	Animal::makeSound() const
+// {
+// 	std::cout << "\tbrrrr!" << std::endl;\
+// }
+
+void	Cat::makeSound() const
+{
+	std::cout << "\tMiaou!" << std::endl;
+}
+
+void	Dog::makeSound() const
+{
+	std::cout << "\twaf" << std::endl;
+}
 
 
 Animal & Animal::operator=(Animal const & rhs)

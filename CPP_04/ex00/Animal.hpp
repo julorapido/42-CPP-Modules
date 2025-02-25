@@ -6,7 +6,7 @@
 /*   By: jsaintho <jsaintho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 12:08:19 by jsaintho          #+#    #+#             */
-/*   Updated: 2025/02/20 12:25:09 by jsaintho         ###   ########.fr       */
+/*   Updated: 2025/02/25 12:00:19 by jsaintho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ class Animal
 	public:
 		Animal();
 		virtual ~Animal();
+		Animal(Animal const & cpy);
 		Animal & operator=(Animal const & rhs);
 		virtual void		makeSound(void) const;
 		virtual std::string	getType(void) const;

@@ -6,7 +6,7 @@
 /*   By: jsaintho <jsaintho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/13 12:58:31 by jsaintho          #+#    #+#             */
-/*   Updated: 2025/02/14 14:42:42 by jsaintho         ###   ########.fr       */
+/*   Updated: 2025/02/24 14:04:56 by jsaintho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -165,7 +165,7 @@ void    RPN::handle_args(int a, char **argv)
                     //     }
                     // }else
                     // {
-                        int c[2] = {-1, -1};
+                        int c[2167.27.199.131 {-1, -1};
                         for(int i = 0; i < 2; i ++)
                         {
                             c[i] = this->s.top();
