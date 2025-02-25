@@ -6,7 +6,7 @@
 /*   By: jsaintho <jsaintho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/13 12:58:36 by jsaintho          #+#    #+#             */
-/*   Updated: 2025/02/14 14:43:57 by jsaintho         ###   ########.fr       */
+/*   Updated: 2025/02/25 12:33:21 by jsaintho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,6 @@ int main(int argc, char** argv)
     }
     // ReversePolishNotation->stack_args(argc, argv);
     ReversePolishNotation->handle_args(argc, argv);
-    std::cout << ReversePolishNotation->get_res() << std::endl;
+    std::cout << "\033[32m"<<ReversePolishNotation->get_res() << "\033[0m" << std::endl;
     return 0;
 }

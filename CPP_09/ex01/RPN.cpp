@@ -6,7 +6,7 @@
 /*   By: jsaintho <jsaintho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/13 12:58:31 by jsaintho          #+#    #+#             */
-/*   Updated: 2025/02/24 14:04:56 by jsaintho         ###   ########.fr       */
+/*   Updated: 2025/02/25 12:32:54 by jsaintho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,33 +98,6 @@ int RPN::verif_args(int a, char **argv)
  
     return (0);
 }
-/*
-void    RPN::stack_args(int a, char **argv)
-{
-     for(int i = 1; i < a; i++)
-    {
-        std::string s = std::string(argv[i]);
-        std::string s2; 
-        std::cout << "stacking: " << s << std::endl;    
-        for (size_t j = 0; j < s.length(); ++j)
-        {
-            if (!std::isdigit(s[j]) || !s[j + 1])
-            {
-                if(!s[j + 1])
-                    s2.push_back(s[j]);
-                int num = atoi(s2.c_str());
-                if(s2 != ""){
-                    this->s.push(num);
-                    std::cout << ">pushing " << num << " to stack." << std::endl;    
-                }  
-                s2 = "";
-            }else
-            {
-                s2.push_back(s[j]);
-            }
-        }
-    }
-}*/
 
 void    RPN::handle_args(int a, char **argv)
 {
@@ -143,54 +116,33 @@ void    RPN::handle_args(int a, char **argv)
             }
             else // operator
             {
-            
                 if(str[i] != ' ')
                 {
-                    // special case "1 2 + 1 * -" 
-                    // if(i == str.length() - 1)
-                    // {
-                    //     int p = i;
-                    //     for(; p > 0 && !(q.find(str[p]) != std::string::npos 
-                    //         || std::isdigit(str[p])); p --)
-                    //     { }
-                    //     if(q.find(str[p]) != std::string::npos)
-                    //     {
-                    //         //std::cout << "wer "<< str[i] << "(" << this->s.top() << ")" << std::endl; 
-                    //         if(str[i] == '+' || str[i] == '-')
-                    //         {
-                    //             int n_top = this->s.top();
-                    //             this->s.push();
-                    //         }
-                    //         return ;
-                    //     }
-                    // }else
-                    // {
-                        int c[2167.27.199.131 {-1, -1};
-                        for(int i = 0; i < 2; i ++)
+                    int c[2] = {-1, -1};
+                    for(int i = 0; i < 2; i ++)
+                    {
+                        c[i] = this->s.top();
+                        this->s.pop();
+                    }
+                    std::cout << "\033[34m"<< c[1] << str[i] << c[0] << "\033[0m"<< std::endl;    
+                    if(c[0] != -1 && c[1] != -1)
+                    {
+                        switch (str[i])
                         {
-                            c[i] = this->s.top();
-                            this->s.pop();
+                            case '+':
+                                this->s.push(c[0] + c[1]);
+                                break;
+                            case '-':
+                                this->s.push(c[1] - c[0]);
+                                break;
+                            case '*':
+                                this->s.push(c[0] * c[1]);
+                                break;
+                            case '/':
+                                this->s.push(c[1] / c[0]);
+                                break;
                         }
-                        std::cout << c[1] << str[i] << c[0] << std::endl;    
-                        if(c[0] != -1 && c[1] != -1)
-                        {
-                            switch (str[i])
-                            {
-                                case '+':
-                                    this->s.push(c[0] + c[1]);
-                                    break;
-                                case '-':
-                                    this->s.push(c[1] - c[0]);
-                                    break;
-                                case '*':
-                                    this->s.push(c[0] * c[1]);
-                                    break;
-                                case '/':
-                                    this->s.push(c[1] / c[0]);
-                                    break;
-                            }
-                        }
-                    //}
+                    }
                 }
             }
         }
