@@ -6,7 +6,7 @@
 /*   By: jsaintho <jsaintho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 12:06:22 by jsaintho          #+#    #+#             */
-/*   Updated: 2025/02/25 13:10:24 by jsaintho         ###   ########.fr       */
+/*   Updated: 2025/02/25 13:23:07 by jsaintho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,12 @@ class BitcoinExchange
         ~BitcoinExchange();
         BitcoinExchange(const BitcoinExchange &copy);
         BitcoinExchange &operator=(const BitcoinExchange &cpy);
+
+        // 
+        void                get_lines(void);
+        unsigned long long  lexicographical_v(const std::string& str);
+        void                convertBitcoin(void);
+        int                 open_file(std::string s, int mode);
 };
 
 #endif
