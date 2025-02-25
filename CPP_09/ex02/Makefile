@@ -1,5 +1,5 @@
 exec = PmergeMe
-src = main.cpp RPN.cpp
+src = main.cpp PmergeMe.cpp
 src_obj = $(exec.cpp=.o)
 cc = c++
 flags = -Wall -Wextra -std=c++98
