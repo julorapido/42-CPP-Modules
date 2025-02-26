@@ -6,7 +6,7 @@
 /*   By: jsaintho <jsaintho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/13 12:58:31 by jsaintho          #+#    #+#             */
-/*   Updated: 2025/02/25 12:32:54 by jsaintho         ###   ########.fr       */
+/*   Updated: 2025/02/26 12:44:27 by jsaintho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,7 +110,7 @@ void    RPN::handle_args(int a, char **argv)
         {
             if (std::isdigit(str[i]))
             {
-                int b = (str[i]) - '0';
+                long long b = (str[i]) - '0';
                 // std::cout << ">pushing " << b << " to stack." << std::endl;    
                 this->s.push(b);    
             }
@@ -118,27 +118,33 @@ void    RPN::handle_args(int a, char **argv)
             {
                 if(str[i] != ' ')
                 {
-                    int c[2] = {-1, -1};
+                    long long c[2] = {-1, -1};
                     for(int i = 0; i < 2; i ++)
                     {
                         c[i] = this->s.top();
                         this->s.pop();
                     }
-                    std::cout << "\033[34m"<< c[1] << str[i] << c[0] << "\033[0m"<< std::endl;    
+                    // std::cout << "\033[34m"<< c[1] << str[i] << c[0] << "\033[0m"<< std::endl;    
                     if(c[0] != -1 && c[1] != -1)
                     {
                         switch (str[i])
                         {
                             case '+':
-                                this->s.push(c[0] + c[1]);
+                                this->s.push((long long) (c[0] + c[1]));
                                 break;
                             case '-':
                                 this->s.push(c[1] - c[0]);
                                 break;
                             case '*':
-                                this->s.push(c[0] * c[1]);
+                                this->s.push((long long )(c[0] * c[1]));
                                 break;
                             case '/':
+                                if(c[0] == 0)
+                                {
+                                    std::cout << "\033[31mCan't divide by zero. \033[0m" << std::endl;
+                                    this->s.push(0);
+                                    return ;
+                                }
                                 this->s.push(c[1] / c[0]);
                                 break;
                         }
@@ -150,7 +156,7 @@ void    RPN::handle_args(int a, char **argv)
     }
 }
 
-int    RPN::get_res(void)
+long long   RPN::get_res(void)
 {
     return (this->s.top());
 }

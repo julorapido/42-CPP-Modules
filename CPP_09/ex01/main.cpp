@@ -6,7 +6,7 @@
 /*   By: jsaintho <jsaintho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/13 12:58:36 by jsaintho          #+#    #+#             */
-/*   Updated: 2025/02/25 12:33:21 by jsaintho         ###   ########.fr       */
+/*   Updated: 2025/02/26 12:31:11 by jsaintho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int main(int argc, char** argv)
     {
         std::cout << "\033[33m";
         if(z == 3)
-            std::cout << "Error: 'notation should finish with an operator.' [+*/-]" << std::endl;
+            std::cout << "Warning: 'notation should finish with an operator.' [+*/-]" << std::endl;
         else if (z == 2)
             std::cout << "Error: 'numbers should be spaced.' [123 => 1 2 3]" << std::endl;
         else if (z == 5)
